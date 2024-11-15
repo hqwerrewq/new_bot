@@ -21,9 +21,10 @@ async def start_handler(msg: Message):
 async def help_handler(msg: Message):
     await msg.answer(f'Аве, Визард...')
 
+
 @router.message(F.text.lower().contains('аве'))
 async def help_handler(msg: Message):
-    await msg.answer(f'Визард...')
+    await msg.answer(f'Хуй соси...')
 
 @router.message(Command('mumble'))
 async def get_mumble_handler(msg: Message, bot: Bot):
@@ -33,6 +34,17 @@ async def get_mumble_handler(msg: Message, bot: Bot):
                               f'Адрес: `s1.mumble-voip.ru`\n'
                               f'Порт: `2540`\n'
                               f'Пароль: `None`', parse_mode='Markdown')
+
+
+@router.message(Command('buff'))
+async def get_mumble_handler(msg: Message, bot: Bot):
+    if await filters.member_filter(msg, bot) is True:
+        await msg.answer(text=f'\n'
+                              f'*Бафф Мага*:\n'
+                              f'Схема: `XYZ45-PIZDA`\n'
+                              f'*Бафф Воина*:\n'
+                              f'Схема: `None`', parse_mode='Markdown')
+
 
 @router.message(F.text == "Моль")
 async def tag_all_handler(msg: types.Message, bot: Bot):
@@ -45,11 +57,6 @@ async def tag_all_handler(msg: types.Message, bot: Bot):
             await bot.send_message(chat_id=chat_id, text=msg_text)
 
 
-# @router.message(Command('prime'))
-# async def prime_handler(msg: Message, bot: Bot, command: CommandObject):
-#     if await filters.admins_filter(msg, bot) is True:
-#         args = command.args
-#     else:
-#         args = None
-#     schedule_text = await get_prime_activity(args)
-#     await msg.answer(text=schedule_text, parse_mode='Markdown')
+@router.message(Command('prime'))
+async def prime_handler(msg: Message):
+    await msg.answer(f'Еблан? Сказано же, не работает...')
